@@ -3,8 +3,8 @@ FROM node:18
 
 # Install dependencies (including fuse3)
 RUN apt-get update && apt-get install -y \
-    fuse3 \
-    fuse3-utils \
+    fuse \
+    fuse-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Install rclone
