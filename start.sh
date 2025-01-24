@@ -19,5 +19,5 @@ rclone mount gdrive: $MOUNT_DIR \
   --daemon
 
 # Start the application
-echo "Starting the application..."
+echo 'Starting app...'
 npm start  # Replace with your app's actual start command
