@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Ensure rclone is installed
 if ! command -v rclone &> /dev/null; then
   echo "Installing rclone..."
@@ -10,7 +9,7 @@ fi
 MOUNT_DIR="/app/gdrive"
 mkdir -p $MOUNT_DIR
 
-# Mount Google Drive without daemon mode for debugging
+# Mount Google Drive using rclone
 echo "Mounting Google Drive..."
 rclone mount gdrive: $MOUNT_DIR \
   --config /app/rclone.conf \
