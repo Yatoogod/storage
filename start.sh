@@ -6,7 +6,7 @@ if ! command -v rclone &> /dev/null; then
   curl https://rclone.org/install.sh | bash
 fi
 
-# Create a mount directory
+# Create a mount directory if it doesn't exist
 MOUNT_DIR="/app/gdrive"
 mkdir -p $MOUNT_DIR
 
@@ -16,8 +16,15 @@ rclone mount gdrive: $MOUNT_DIR \
   --config /app/rclone.conf \
   --allow-other \
   --vfs-cache-mode writes \
+  --daemon-timeout 10m \
   --daemon
 
+# Check if the mount was successful
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to mount Google Drive."
+  exit 1
+fi
+
 # Start the application
-echo 'Starting app...'
-npm start  # Replace with your app's actual start command
+echo "Starting the application..."
+npm start
