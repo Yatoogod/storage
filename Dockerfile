@@ -13,7 +13,7 @@ COPY . .
 # Ensure the startup script is executable
 RUN chmod +x /app/start.sh
 
-# Expose the app's port (optional)
+# Expose the app port (optional)
 EXPOSE 3000  # Change this to your app's port if needed
 
 # Run the startup script
