@@ -1,10 +1,10 @@
 # Use a base image
 FROM node:18
 
-# Install dependencies (including fuse3)
+# Install dependencies (including libfuse2)
 RUN apt-get update && apt-get install -y \
+    libfuse2 \
     fuse \
-    fuse-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Install rclone
