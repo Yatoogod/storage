@@ -10,14 +10,12 @@ fi
 MOUNT_DIR="/app/gdrive"
 mkdir -p $MOUNT_DIR
 
-# Mount Google Drive using rclone
+# Mount Google Drive without daemon mode for debugging
 echo "Mounting Google Drive..."
 rclone mount gdrive: $MOUNT_DIR \
   --config /app/rclone.conf \
   --allow-other \
-  --vfs-cache-mode writes \
-  --daemon-timeout 10m \
-  --daemon
+  --vfs-cache-mode writes
 
 # Check if the mount was successful
 if [ $? -ne 0 ]; then
